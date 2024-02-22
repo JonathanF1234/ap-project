@@ -1,4 +1,28 @@
-tiles.setCurrentTilemap(tilemap`level2`)
+function Spanwing (Difficulty: number) {
+    if (Difficulty == 1) {
+    	
+    } else if (Difficulty == 2) {
+    	
+    } else if (Difficulty == 3) {
+    	
+    } else if (Difficulty == 4) {
+    	
+    } else if (Difficulty == 5) {
+    	
+    }
+}
+function Level (CurrentLevel: number) {
+    if (CurrentLevel == 1) {
+        tiles.setCurrentTilemap(tilemap`level2`)
+    } else if (CurrentLevel == 2) {
+    	
+    } else if (CurrentLevel == 3) {
+    	
+    }
+}
+let Difficulty = game.askForNumber("Select Difficulty only 1-3 is valid", 1)
+let CurrentLevel = 1
+Level(CurrentLevel)
 let mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -17,4 +41,14 @@ let mySprite = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
+tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 1))
 controller.moveSprite(mySprite)
+mySprite.setStayInScreen(true)
+info.setScore(0)
+info.setLife(3)
+scene.cameraFollowSprite(mySprite)
+if (Difficulty == 0 || Difficulty > 3) {
+    Difficulty = game.askForNumber("Invalid, Select Difficulty only 1-3 is valid", 1)
+}
+let Enemy_list = [0, 1]
+Spanwing(Difficulty)
